@@ -1,0 +1,580 @@
+:root {
+    --primary: #1a365d;
+    --secondary: #4a90e2;
+    --accent: #34d399;
+    --background: #f8fafc;
+    --text: #2d3748;
+    --gray-light: #f1f5f9;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --radius: 8px;
+}
+
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; /* Убираем горизонтальный скролл */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Утилиты */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem; /* Уменьшаем отступы для мобильных устройств */
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* Хедер */
+.header {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.logo:hover {
+    color: var(--secondary);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: var(--transition);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--secondary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.header-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.header-toggle .hamburger {
+    width: 24px;
+    height: 2px;
+    background: var(--primary);
+    position: relative;
+    transition: var(--transition);
+}
+
+.header-toggle .hamburger::before,
+.header-toggle .hamburger::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+.header-toggle .hamburger::before {
+    transform: translateY(-6px);
+}
+
+.header-toggle .hamburger::after {
+    transform: translateY(6px);
+}
+
+.header-toggle.active .hamburger {
+    background: transparent;
+}
+
+.header-toggle.active .hamburger::before {
+    transform: rotate(45deg);
+}
+
+.header-toggle.active .hamburger::after {
+    transform: rotate(-45deg);
+}
+
+/* Основной контент */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr; /* По умолчанию одна колонка */
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+/* Карта */
+.card {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 40%, transparent 60%);
+    transform: rotate(45deg);
+}
+
+.card-number {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin: 1rem 0;
+}
+
+.card-balance {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.card-type {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+/* Транзакции */
+.transactions {
+    margin-top: 2rem;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.transaction-item:hover {
+    background-color: var(--gray-light);
+}
+
+.transaction-info strong {
+    display: block;
+    color: var(--text);
+}
+
+.transaction-date {
+    font-size: 0.875rem;
+    color: var(--gray-light);
+}
+
+.transaction-amount {
+    font-weight: 600;
+}
+
+.transaction-amount.positive {
+    color: var(--accent);
+}
+
+/* Кнопки */
+.button {
+    background: var(--primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.button:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Преимущества */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Футер */
+.footer {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: clamp(2rem, 5vh, 4rem) 0 clamp(1rem, 3vh, 2rem);
+    margin-top: auto; /* Для фиксации футера внизу, если используется flexbox */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(1.5rem, 5vw, 3rem);
+    margin-bottom: clamp(1.5rem, 5vh, 3rem);
+}
+
+.footer-section {
+    text-align: left;
+}
+
+.footer-section h5 {
+    font-size: clamp(1rem, 3vw, 1.125rem);
+    margin-bottom: clamp(0.75rem, 2vh, 1rem);
+    position: relative;
+    display: inline-block;
+}
+
+.footer-section h5::after {
+    content: '';
+    position: absolute;
+    bottom: -0.25rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.footer-section h5:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    margin-bottom: clamp(0.5rem, 2vh, 0.75rem);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: white;
+    transform: translateX(5px);
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    margin-top: clamp(0.75rem, 2vh, 1rem);
+}
+
+.footer-social a {
+    color: white;
+    font-size: 1.25rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: clamp(1.5rem, 5vh, 3rem);
+    padding-top: clamp(1rem, 3vh, 1.5rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Анимации */
+@media (prefers-reduced-motion: no-preference) {
+    .footer-section a,
+    .footer-social a {
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(0.75rem, 5vw, 1.5rem); 
+}
+
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: clamp(1rem, 5vw, 1.25rem); 
+    }
+
+    .card {
+        padding: clamp(0.75rem, 3vw, 1rem); 
+    }
+
+    .card-number {
+        font-size: clamp(0.875rem, 4vw, 1rem);
+    }
+
+    .card-balance {
+        font-size: clamp(1.25rem, 6vw, 1.5rem); 
+    }
+
+    .button {
+        padding: clamp(0.5rem, 2.5vw, 0.75rem) clamp(1rem, 5vw, 1.5rem);
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: clamp(1rem, 3vh, 1.5rem);
+    }
+
+    .footer-section a {
+        margin-bottom: clamp(0.5rem, 2vh, 0.75rem);
+    }
+
+    .footer-bottom {
+        font-size: clamp(0.75rem, 2vw, 0.875rem);
+    }
+
+}
+
+
+@media (max-width: 360px) {
+    .logo {
+        font-size: clamp(0.875rem, 4vw, 1rem); 
+    }
+
+    .card-number {
+        font-size: clamp(0.75rem, 3.5vw, 0.875rem); 
+    }
+
+    .card-balance {
+        font-size: clamp(1rem, 5vw, 1.25rem); 
+    }
+
+    .button {
+        padding: clamp(0.4rem, 2vw, 0.5rem) clamp(0.8rem, 4vw, 1rem); 
+    }
+
+    .footer-content {
+        gap: clamp(0.5rem, 3vw, 1rem); 
+    }
+}
+
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .feature-grid {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+@media (min-width: 1025px) {
+    .main-content {
+        grid-template-columns: 2fr 1fr; 
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(4, 1fr); 
+    }
+}
+
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: var(--background);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: var(--shadow-lg);
+        transition: right 0.3s ease;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: clamp(1rem, 5vw, 2rem); 
+    }
+
+    .header-toggle {
+        display: block;
+    }
+}
+
+.footer-content {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: clamp(1rem, 3vw, 1.5rem);
+}
+
+.footer-section {
+    text-align: center;
+}
+
+.footer-section h5::after {
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+}
+
+.footer-section h5:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.footer-social {
+    justify-content: center;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+    .card,
+    .feature-card,
+    .button,
+    .nav-link,
+    .header,
+    .transaction-item {
+        transition: var(--transition);
+    }
+}
+
+
+@media (orientation: portrait) {
+    .feature-grid {
+        gap: clamp(1rem, 3vh, 1.5rem); 
+    }
+}
+
+@media (orientation: landscape) {
+    .feature-grid {
+        gap: clamp(1rem, 3vw, 1.5rem); 
+    }
+}
+
+
+@media (min-height: 800px) {
+    .card {
+        padding: clamp(1rem, 5vh, 2rem); 
+    }
+}

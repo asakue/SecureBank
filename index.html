@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SecureBank — современный интернет-банкинг с аналитикой расходов и мгновенными переводами. Управляйте финансами удобно и безопасно.">
+    <meta name="keywords" content="банк, интернет-банкинг, аналитика расходов, мгновенные переводы, финансы, SecureBank">
+    <title>SecureBank — Ваш персональный банк</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"></noscript>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+    <div class="container">
+        <header class="header" role="banner">
+            <div class="container">
+                <a href="#" class="logo" aria-label="SecureBank — главная страница">
+                    <span class="logo-text">SecureBank</span>
+                    <span class="logo-dot">.</span>
+                </a>
+        
+                <nav class="nav-menu" aria-label="Основная навигация">
+                    <ul class="nav-links" role="menubar">
+                        <li><a href="#" class="nav-link" role="menuitem">Главная</a></li>
+                        <li><a href="#" class="nav-link" role="menuitem">Платежи</a></li>
+                        <li><a href="#" class="nav-link" role="menuitem">Переводы</a></li>
+                        <li><a href="#" class="nav-link" role="menuitem">Инвестиции</a></li>
+                        <li><a href="#" class="nav-link" role="menuitem">Профиль</a></li>
+                    </ul>
+                </nav>
+        
+                <button class="header-toggle" aria-label="Меню" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content" role="main">
+            <section aria-labelledby="cardSection">
+                <h2 id="cardSection" class="visually-hidden">Банковская карта и операции</h2>
+                <div class="card-section">
+                    <article class="card" aria-label="Дебетовая карта">
+                        <div class="status-indicator" aria-hidden="true"></div>
+                        <div class="card-number" aria-label="Номер карты">•• •• 4589</div>
+                        <div class="card-balance" role="text">458,932 ₽</div>
+                        <div class="card-type">Дебетовая карта</div>
+                    </article>
+
+                    <section class="transactions" aria-labelledby="transactions">
+                        <h3 id="transactions">Последние операции</h3>
+                        <ul role="list">
+                            <li class="transaction-item" role="listitem">
+                                <div class="transaction-info">
+                                    <strong>Супермаркет METRO</strong>
+                                    <time class="transaction-date" datetime="2025-03-22">22 марта 2025</time>
+                                </div>
+                                <div class="transaction-amount" aria-label="Сумма списания">−4,586 ₽</div>
+                            </li>
+                            <li class="transaction-item" role="listitem">
+                                <div class="transaction-info">
+                                    <strong>Зачисление</strong>
+                                    <time class="transaction-date" datetime="2025-03-21">21 марта 2025</time>
+                                </div>
+                                <div class="transaction-amount positive" aria-label="Сумма зачисления">+75,000 ₽</div>
+                            </li>
+                            <li class="transaction-item" role="listitem">
+                                <div class="transaction-info">
+                                    <strong>АЗС Лукойл</strong>
+                                    <time class="transaction-date" datetime="2025-03-20">20 марта 2025</time>
+                                </div>
+                                <div class="transaction-amount" aria-label="Сумма списания">−2,850 ₽</div>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </section>
+
+            <section aria-labelledby="analytics">
+                <h3 id="analytics">Аналитика расходов</h3>
+                <div class="chart" role="img" aria-label="График месячных расходов">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+                <button class="button" aria-label="Скачать подробный отчет">Подробный отчет</button>
+            </section>
+
+            <section aria-labelledby="features">
+                <h3 id="features" class="visually-hidden">Наши преимущества</h3>
+                <div class="feature-grid">
+                    <article class="feature-card" role="article">
+                        <div class="feature-icon" aria-hidden="true">💸</div>
+                        <h4>Мгновенные переводы</h4>
+                        <p>Переводите деньги без комиссии на карты любых банков</p>
+                    </article>
+                    <article class="feature-card" role="article">
+                        <div class="feature-icon" aria-hidden="true">🛡️</div>
+                        <h4>Безопасные платежи</h4>
+                        <p>Все транзакции защищены по международным стандартам</p>
+                    </article>
+                    <article class="feature-card" role="article">
+                        <div class="feature-icon" aria-hidden="true">📊</div>
+                        <h4>Умная аналитика</h4>
+                        <p>Анализируйте свои расходы и планируйте бюджет</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer" role="contentinfo">
+            <div class="footer-content">
+                <section class="footer-section" aria-labelledby="support">
+                    <h5 id="support">Поддержка</h5>
+                    <ul>
+                        <li><a href="#" role="link">Связаться с нами</a></li>
+                        <li><a href="#" role="link">FAQ</a></li>
+                    </ul>
+                </section>
+                <section class="footer-section" aria-labelledby="security">
+                    <h5 id="security">Безопасность</h5>
+                    <ul>
+                        <li><a href="#" role="link">Правила безопасности</a></li>
+                        <li><a href="#" role="link">Защита данных</a></li>
+                    </ul>
+                </section>
+                <section class="footer-section" aria-labelledby="about">
+                    <h5 id="about">О банке</h5>
+                    <ul>
+                        <li><a href="#" role="link">О нас</a></li>
+                        <li><a href="#" role="link">Новости</a></li>
+                    </ul>
+                </section>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SecureBank. Все права защищены</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
